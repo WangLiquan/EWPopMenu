@@ -27,11 +27,11 @@ NavigationMenuShared.showPopMenuSelecteWithFrameWidth(width: itemWidth, height: 
 ///点击回调
     switch index{
     case 0:
-    EWToast.showCenterWithText(text: "点击测试1")
+         EWToast.showCenterWithText(text: "点击测试1")
     case 1:
-    EWToast.showCenterWithText(text: "点击测试2")
+         EWToast.showCenterWithText(text: "点击测试2")
     default:
-    break
+         break
     }
 }
 ```
