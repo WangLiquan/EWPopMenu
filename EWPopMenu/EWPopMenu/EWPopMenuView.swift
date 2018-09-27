@@ -40,8 +40,16 @@ class EWPopMenuView: UIView {
     private var imgSource: [String] = []
 
     private var tableView: UITableView = UITableView()
-
-    init(frame: CGRect, width: CGFloat, height: CGFloat, point: CGPoint, items: [String], imgSource: [String],  action: ((Int) -> ())?){
+    /// init
+    ///
+    /// - Parameters:
+    ///   - width: tableView.width
+    ///   - height: tableView最大height,如果cell数量大于4,则是tableView.frame.size.height
+    ///   - point: 初始点,tableView上的三角形的顶点
+    ///   - items: 每个cell的title数组
+    ///   - imgSource: 每个cell的icon数组,可为空
+    ///   - action: 回调方法
+    init(width: CGFloat, height: CGFloat, point: CGPoint, items: [String], imgSource: [String],  action: ((Int) -> ())?){
         super.init(frame:CGRect(x: 0, y: 0, width: ScreenInfo.Width, height: ScreenInfo.Height))
         drawMyTableView()
         /// view全屏展示

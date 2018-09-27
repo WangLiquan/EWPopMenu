@@ -21,7 +21,7 @@ class EWPopMenu: NSObject {
             weakSelf?.hideMenu()
         }
         let window = UIApplication.shared.windows.first
-        self.menuView = EWPopMenuView(frame: (window?.bounds)!, width: width, height: height, point: point, items: item, imgSource: imgSource, action: { (index) in
+        self.menuView = EWPopMenuView(width: width, height: height, point: point, items: item, imgSource: imgSource, action: { (index) in
             ///点击回调
             action(index)
             weakSelf?.hideMenu()
