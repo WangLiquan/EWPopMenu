@@ -3,11 +3,17 @@
 
 # 实现效果:
 点击弹出小型列表菜单.
+
 view.frame,初始位置等都可通过调用方法自定制.
+
 实现cell数量自适应,当数量大于4时,view高度固定,可滑动.
+
 cell实现纯文字与icon+文字两种状态.自适应.
+
 通过回调响应点击方法.
+
 点任意位置菜单消失.
+
 <br>
 
 ![效果图预览](https://github.com/WangLiquan/EWPopMenu/raw/master/image/demonstration.gif)
