@@ -214,13 +214,16 @@
 				TargetAttributes = {
 					792BDB28215C7FD4003A635D = {
 						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 1000;
 					};
 					792BDB3C215C7FD8003A635D = {
 						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 1000;
 						TestTargetID = 792BDB28215C7FD4003A635D;
 					};
 					792BDB47215C7FD8003A635D = {
 						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 1000;
 						TestTargetID = 792BDB28215C7FD4003A635D;
 					};
 				};
@@ -464,7 +467,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.Ethan.EWPopMenu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -482,7 +485,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.Ethan.EWPopMenu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -502,7 +505,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.Ethan.EWPopMenuTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/EWPopMenu.app/EWPopMenu";
 			};
@@ -523,7 +526,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.Ethan.EWPopMenuTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/EWPopMenu.app/EWPopMenu";
 			};
@@ -543,7 +546,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.Ethan.EWPopMenuUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = EWPopMenu;
 			};
@@ -563,7 +566,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.Ethan.EWPopMenuUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = EWPopMenu;
 			};

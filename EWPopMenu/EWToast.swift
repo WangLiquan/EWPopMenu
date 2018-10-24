@@ -18,7 +18,7 @@ class EWToast: NSObject {
     var _duration: CGFloat = ToastDispalyDuration
 
     init(text: String) {
-        let rect = text.boundingRect(with: CGSize(width: 250, height: CGFloat.greatestFiniteMagnitude), options:[NSStringDrawingOptions.truncatesLastVisibleLine, NSStringDrawingOptions.usesFontLeading,NSStringDrawingOptions.usesLineFragmentOrigin], attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 16)], context: nil)
+        let rect = text.boundingRect(with: CGSize(width: 250, height: CGFloat.greatestFiniteMagnitude), options:[NSStringDrawingOptions.truncatesLastVisibleLine, NSStringDrawingOptions.usesFontLeading,NSStringDrawingOptions.usesLineFragmentOrigin], attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 16)], context: nil)
         let textLabel = UILabel(frame: CGRect(x: 0, y: 0, width: rect.size.width + 40, height: rect.size.height + 20))
         textLabel.backgroundColor = UIColor.clear
         textLabel.textColor = UIColor.white
@@ -31,11 +31,11 @@ class EWToast: NSObject {
         _contentView.layer.cornerRadius = 2.0
         _contentView.backgroundColor = ToastBackgroundColor
         _contentView.addSubview(textLabel)
-        _contentView.autoresizingMask = UIViewAutoresizing.flexibleWidth
+        _contentView.autoresizingMask = UIView.AutoresizingMask.flexibleWidth
         super.init()
         _contentView.addTarget(self, action: #selector(toastTaped), for: .touchDown)
         ///添加通知获取手机旋转状态.保证正确的显示效果
-        NotificationCenter.default.addObserver(self, selector: #selector(toastTaped), name: NSNotification.Name.UIDeviceOrientationDidChange, object: UIDevice.current)
+        NotificationCenter.default.addObserver(self, selector: #selector(toastTaped), name: UIDevice.orientationDidChangeNotification, object: UIDevice.current)
     }
     @objc func toastTaped(){
         self.hideAnimation()
@@ -51,14 +51,14 @@ class EWToast: NSObject {
     }
     func showAnimation(){
         UIView.beginAnimations("show", context: nil)
-        UIView.setAnimationCurve(UIViewAnimationCurve.easeIn)
+        UIView.setAnimationCurve(UIView.AnimationCurve.easeIn)
         UIView.setAnimationDuration(0.3)
         _contentView.alpha = 1.0
         UIView.commitAnimations()
     }
     @objc func hideAnimation(){
         UIView.beginAnimations("hide", context: nil)
-        UIView.setAnimationCurve(UIViewAnimationCurve.easeOut)
+        UIView.setAnimationCurve(UIView.AnimationCurve.easeOut)
         UIView.setAnimationDelegate(self)
         UIView.setAnimationDidStop(#selector(dismissToast))
         UIView.setAnimationDuration(0.3)
