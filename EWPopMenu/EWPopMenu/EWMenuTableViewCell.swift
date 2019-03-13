@@ -17,7 +17,7 @@ let kImgLabelWidth: CGFloat = 10.0
 
 class EWMenuTableViewCell: UITableViewCell {
     static let identifier = "EWMenuTableViewCell"
-    
+
     private lazy var iconImg: UIImageView = {
         let imageView = UIImageView(frame: CGRect(x: kLineXY, y: (itemHeight - kImageWidth)/2, width: kImageWidth, height: kImageWidth))
         imageView.backgroundColor = UIColor.clear
@@ -46,11 +46,11 @@ class EWMenuTableViewCell: UITableViewCell {
         self.addSubview(iconImg)
         self.addSubview(conLabel)
     }
-    public func setContentBy(titArray: [String], imgArray: [String], row: Int){
-        if imgArray.count == 0{
+    public func setContentBy(titArray: [String], imgArray: [String], row: Int) {
+        if imgArray.isEmpty {
             self.iconImg.isHidden = true
             self.conLabel.frame = CGRect(x: kLineXY, y: 0, width: itemWidth - kLineXY * 2, height: itemHeight)
-        }else{
+        } else {
             self.iconImg.isHidden = false
             self.conLabel.frame = CGRect(x: self.iconImg.frame.maxX + kImgLabelWidth, y: 0, width: itemWidth - kImgLabelWidth - kLineXY - kImageWidth - 15 , height: itemHeight)
             self.iconImg.image = UIImage(named: imgArray[row])

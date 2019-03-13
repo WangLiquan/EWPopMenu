@@ -37,26 +37,26 @@ class EWToast: NSObject {
         ///添加通知获取手机旋转状态.保证正确的显示效果
         NotificationCenter.default.addObserver(self, selector: #selector(toastTaped), name: UIDevice.orientationDidChangeNotification, object: UIDevice.current)
     }
-    @objc func toastTaped(){
+    @objc func toastTaped() {
         self.hideAnimation()
     }
-    func deviceOrientationDidChanged(notify: Notification){
+    func deviceOrientationDidChanged(notify: Notification) {
         self.hideAnimation()
     }
-    @objc func dismissToast(){
+    @objc func dismissToast() {
         _contentView.removeFromSuperview()
     }
-    func setDuration(duration: CGFloat){
+    func setDuration(duration: CGFloat) {
         _duration = duration
     }
-    func showAnimation(){
+    func showAnimation() {
         UIView.beginAnimations("show", context: nil)
         UIView.setAnimationCurve(UIView.AnimationCurve.easeIn)
         UIView.setAnimationDuration(0.3)
         _contentView.alpha = 1.0
         UIView.commitAnimations()
     }
-    @objc func hideAnimation(){
+    @objc func hideAnimation() {
         UIView.beginAnimations("hide", context: nil)
         UIView.setAnimationCurve(UIView.AnimationCurve.easeOut)
         UIView.setAnimationDelegate(self)
@@ -66,62 +66,62 @@ class EWToast: NSObject {
         UIView.commitAnimations()
     }
 
-    func show(){
+    func show() {
         let window: UIWindow = UIApplication.shared.windows.last!
         _contentView.center = window.center
         window.addSubview(_contentView)
         self.showAnimation()
         self.perform(#selector(hideAnimation), with: nil, afterDelay: TimeInterval(_duration))
     }
-    func showFromTopOffset(top: CGFloat){
+    func showFromTopOffset(top: CGFloat) {
         let window: UIWindow = UIApplication.shared.windows.last!
         _contentView.center = CGPoint(x: window.center.x, y: top + _contentView.frame.size.height/2)
         window.addSubview(_contentView)
         self.showAnimation()
         self.perform(#selector(hideAnimation), with: nil, afterDelay: TimeInterval(_duration))
     }
-    func showFromBottomOffset(bottom: CGFloat){
+    func showFromBottomOffset(bottom: CGFloat) {
         let window: UIWindow = UIApplication.shared.windows.last!
         _contentView.center = CGPoint(x: window.center.x, y: window.frame.size.height - (bottom + _contentView.frame.size.height/2))
         window.addSubview(_contentView)
         self.showAnimation()
         self.perform(#selector(hideAnimation), with: nil, afterDelay: TimeInterval(_duration))
     }
-    //MARK: 中间显示
-    class func showCenterWithText(text: String){
+    // MARK: 中间显示
+    class func showCenterWithText(text: String) {
         EWToast.showCenterWithText(text: text, duration: CGFloat(ToastDispalyDuration))
     }
-    class func showCenterWithText(text: String, duration: CGFloat){
+    class func showCenterWithText(text: String, duration: CGFloat) {
         let toast: EWToast = EWToast(text: text)
         toast.setDuration(duration: duration)
         toast.show()
     }
-    //MARK: 上方显示
-    class func showTopWithText(text: String){
+    // MARK: 上方显示
+    class func showTopWithText(text: String) {
         EWToast.showTopWithText(text: text, topOffset: 100.0, duration: ToastDispalyDuration)
     }
-    class func showTopWithText(text: String, duration: CGFloat){
+    class func showTopWithText(text: String, duration: CGFloat) {
         EWToast.showTopWithText(text: text, topOffset: 100, duration: duration)
     }
-    class func showTopWithText(text: String, topOffset: CGFloat){
+    class func showTopWithText(text: String, topOffset: CGFloat) {
         EWToast.showTopWithText(text: text, topOffset: topOffset, duration: ToastDispalyDuration)
     }
-    class func showTopWithText(text: String, topOffset: CGFloat, duration: CGFloat){
+    class func showTopWithText(text: String, topOffset: CGFloat, duration: CGFloat) {
         let toast = EWToast(text: text)
         toast.setDuration(duration: duration)
         toast.showFromTopOffset(top: topOffset)
     }
-    //MARK: 下方显示
-    class func showBottomWithText(text: String){
+    // MARK: 下方显示
+    class func showBottomWithText(text: String) {
         EWToast.showBottomWithText(text: text, bottomOffset: 100.0, duration: ToastDispalyDuration)
     }
-    class func showBottomWithText(text: String, duration: CGFloat){
+    class func showBottomWithText(text: String, duration: CGFloat) {
         EWToast.showBottomWithText(text: text, bottomOffset: 100.0, duration: duration)
     }
-    class func showBottomWithText(text: String, bottomOffset: CGFloat){
+    class func showBottomWithText(text: String, bottomOffset: CGFloat) {
         EWToast.showBottomWithText(text: text, bottomOffset: bottomOffset, duration: ToastDispalyDuration)
     }
-    class func showBottomWithText(text: String, bottomOffset: CGFloat, duration: CGFloat){
+    class func showBottomWithText(text: String, bottomOffset: CGFloat, duration: CGFloat) {
         let toast = EWToast(text: text)
         toast.setDuration(duration: duration)
         toast.showFromBottomOffset(bottom: bottomOffset)

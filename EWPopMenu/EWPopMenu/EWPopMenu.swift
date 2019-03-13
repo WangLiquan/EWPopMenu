@@ -14,10 +14,10 @@ class EWPopMenu: NSObject {
     static let shared = EWPopMenu()
     private var menuView: EWPopMenuView?
 
-    public func showPopMenuSelecteWithFrameWidth(width: CGFloat, height: CGFloat, point: CGPoint, item: [String], imgSource: [String], action: @escaping ((Int) -> ())){
+    public func showPopMenuSelecteWithFrameWidth(width: CGFloat, height: CGFloat, point: CGPoint, item: [String], imgSource: [String], action: @escaping ((Int) -> Void)) {
         weak var weakSelf = self
         /// 每次重置保证显示效果
-        if self.menuView != nil{
+        if self.menuView != nil {
             weakSelf?.hideMenu()
         }
         let window = UIApplication.shared.windows.first
@@ -32,7 +32,7 @@ class EWPopMenu: NSObject {
         self.menuView?.backgroundColor = UIColor.black.withAlphaComponent(0)
         window?.addSubview(self.menuView!)
     }
-    public func hideMenu(){
+    public func hideMenu() {
         self.menuView?.removeFromSuperview()
         self.menuView = nil
     }

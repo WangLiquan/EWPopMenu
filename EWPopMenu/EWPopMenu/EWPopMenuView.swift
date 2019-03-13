@@ -17,7 +17,7 @@ struct ScreenInfo {
         return UIScreen.main.bounds.equalTo(CGRect(x: 0, y: 0, width: 375, height: 812))
     }
     static private func navBarHeight() -> CGFloat {
-        return isIphoneX() ? 88 : 64;
+        return isIphoneX() ? 88 : 64
     }
 }
 /// 默认的cell高度宽度,可修改
@@ -25,9 +25,9 @@ let itemHeight: CGFloat = 36.0
 let itemWidth: CGFloat = 113.0
 
 class EWPopMenuView: UIView {
-    public var touchBlock: (()->())?
+    public var touchBlock: ( () -> Void )?
     /// 点击cell回调
-    public var indexBlock: ((Int)->())?
+    public var indexBlock: ( (Int) -> Void )?
     /// 起始点,tableView上三角形的顶部
     private var point:CGPoint?
     /// tableView.height
@@ -49,7 +49,7 @@ class EWPopMenuView: UIView {
     ///   - items: 每个cell的title数组
     ///   - imgSource: 每个cell的icon数组,可为空
     ///   - action: 回调方法
-    init(width: CGFloat, height: CGFloat, point: CGPoint, items: [String], imgSource: [String],  action: ((Int) -> ())?){
+    init(width: CGFloat, height: CGFloat, point: CGPoint, items: [String], imgSource: [String],  action: ((Int) -> Void)?) {
         super.init(frame:CGRect(x: 0, y: 0, width: ScreenInfo.Width, height: ScreenInfo.Height))
         drawMyTableView()
         /// view全屏展示
@@ -63,16 +63,16 @@ class EWPopMenuView: UIView {
         self.imgSource.removeAll()
         self.imgSource += imgSource
         /// 如果图片数组与标题数组数量不符,则不展示图片
-        if imgSource.count != titleSource.count{
+        if imgSource.count != titleSource.count {
             self.imgSource.removeAll()
         }
         /// 如果没有图片展示,则将tabelView宽度控制在100
-        if imgSource.count == 0{
+        if imgSource.isEmpty {
             self.layerWidth = 100
         }
         /// 弱引用防止闭包循环引用
         weak var weakSelf = self
-        if action != nil{
+        if action != nil {
             weakSelf?.indexBlock = { row in
                 /// 点击cell回调,将点击cell.indexpath.row返回
                 action!(row)
@@ -92,8 +92,8 @@ class EWPopMenuView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
-    private func drawMyTableView(){
-        tableView.separatorStyle = .none;
+    private func drawMyTableView() {
+        tableView.separatorStyle = .none
         tableView.dataSource = self
         tableView.delegate = self
         tableView.tableFooterView = UIView()
@@ -124,13 +124,13 @@ class EWPopMenuView: UIView {
     }
     /// 点击屏幕任意位置menu消失
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if self.touchBlock != nil{
+        if self.touchBlock != nil {
             touchBlock!()
         }
     }
 
 }
-extension EWPopMenuView:UITableViewDelegate,UITableViewDataSource{
+extension EWPopMenuView:UITableViewDelegate,UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return itemHeight
@@ -150,5 +150,3 @@ extension EWPopMenuView:UITableViewDelegate,UITableViewDataSource{
         self.indexBlock!(indexPath.row)
     }
 }
-
-
